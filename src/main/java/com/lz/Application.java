@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lz.model.Device;
 import com.lz.service.IDeviceService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.aop.SpringProxy;
 import org.springframework.aop.framework.Advised;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@NativeHint(
+/*@NativeHint(
         options = "--enable-https",
         jdkProxies = @JdkProxyHint(
                 types = {
@@ -31,16 +33,16 @@ import org.springframework.web.bind.annotation.RestController;
                         DecoratingProxy.class
                 }
         )
-)
+)*/
 @RestController
 @EnableAsync
 @EnableScheduling
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.lz"})
+//@ComponentScan(basePackages = {"com.lz"})
+@AllArgsConstructor
 public class Application {
 
-    @Autowired
-    private IDeviceService iDeviceService;
+    private final IDeviceService iDeviceService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
