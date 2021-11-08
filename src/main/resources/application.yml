@@ -1,0 +1,46 @@
+
+server:
+  port: 8081
+  servlet:
+    context-path: /iot
+
+logging:
+  pattern:
+    console: "===%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n"
+    file: "===%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n"
+  file:
+    name: logs/app.log
+  charset:
+    console: utf-8
+    file: utf-8
+  logback:
+    rollingpolicy:
+      file-name-pattern: logs/app_%d{yyMMdd}.%i.log
+      max-file-size: 20MB
+      max-history: 10
+      total-size-cap: 1GB
+  root:
+    level: info
+
+
+mybatis-plus:
+  mapper-locations: classpath:com/lz/mapper/xml/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: 123456
+    platform: postgres
+    url: jdbc:postgresql://172.16.22.170:65432/iot_hd
+    hikari:
+      auto-commit: true
+      connection-test-query: SELECT 1
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      maximum-pool-size: 15
+      minimum-idle: 5
+      pool-name: XcHikariPool
