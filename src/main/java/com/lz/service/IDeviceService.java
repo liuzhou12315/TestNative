@@ -10,5 +10,6 @@ import org.apache.ibatis.annotations.Param;
 public interface IDeviceService extends IService<Device> {
 
     IPage<Device> selectPage(IPage<Device> page, @Param(Constants.WRAPPER) Wrapper<Device> queryWrapper);
- 
+
+    Device oneDev();
 }

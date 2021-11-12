@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.iot.mapper.DeviceMapper">
+<mapper namespace="com.lz.mapper.DeviceMapper">
 
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.lz.model.Device">
@@ -26,5 +26,9 @@
 		<result column="report_info" property="reportInfo" jdbcType="OTHER"
 			typeHandler="com.lz.config.JsonTypeHandler" />
 	</resultMap>
+
+	<select id="oneDev" resultType="com.lz.model.Device" resultMap="BaseResultMap">
+		select * from iot_device offset 0 limit 1
+	</select>
 
 </mapper>
